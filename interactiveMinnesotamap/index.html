@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>Minneapolis Home Sales, 2017</title>
+  <script type="text/javascript">
+  </script>
+  <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.js"></script>
+  <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.css" rel="stylesheet" />
+  <style>
+    body { margin:0; padding:0; }
+    #map { position:absolute; top:0; bottom:0; width:100%; }
+</style>
+</head>
+
+<body>
+
+<div id="map"></div>
+  <script>
+    var _map         = null,
+        _centerLat   = 44.976665,
+        _centerLng   = -93.268653,
+        _dataFile    = "./homes-interstate.geojson",
+        _accessToken = "pk.eyJ1IjoiZWxsYTI0IiwiYSI6ImNqbjEwbTBpeDIzaTMzcm8ycHU3YmM0bHAifQ.tIkhePuObTjcsdEj81UDBA",
+        _mapStyle    = "mapbox://styles/ella24/cjnkypvrl8jjs2rqjihijq7fk";
+        
+
+    mapboxgl.accessToken = _accessToken;
+    _map = new mapboxgl.Map ({
+                               container: "map",
+                               style: _mapStyle,
+                               center: [_centerLng, _centerLat],
+                               zoom: 11
+    });
+
+    function init ()
+    {
+      _map.addSource ("markers-source", {
+                                         type: "geojson",
+                                         data: _dataFile
+      });
+
+      _map.addLayer (
+      {
+        "id": "markers",
+        "type": "circle",
+        "source": "markers-source",
+        "paint": {
+                  "circle-color":
+                  {
+                    property: "AdjustedSa",
+                    type: "interval",
+                    stops: [
+                        [50000, "#fa9fb5"],
+                        [100000, "#bcbddc"],
+                        [300000, "#756bb1"],
+                        [500000, "#8856a7"],
+                        [1000000, "#a1d99b"],
+                        [5000000, "#31a354"]
+                    ]
+                    },
+                   "circle-radius":
+                   {
+                    property: "PropType",
+                    type: "categorical",
+                    stops: [
+	                        ["Apartment", 2],
+	                        ["Condominium", 2.5],
+	                        ["Double Bungalow", 3],
+	                        ["Townhouse", 3.5],
+	                        ["Triplex", 3.5],
+	                        ["Residential", 4],
+	                        ["Residential - Zero Lot Line- DB", 4.5],
+	                        ["Vacant Land - Residential", 5],
+	                        ["Condo - Garage\/Miscellaneous", 5.5],
+	                        ["Vacant Land - Apartment", 5.6],   
+	                        ["Vacant Land - Commercial", 5.7],                       
+	                        ["Commercial", 6],
+	                        ["Industrial", 8]
+	                  ]},
+                   "circle-stroke-width": 0
+        }
+         });
+         
+         var popup = new mapboxgl.Popup({
+        closeButton: false,
+        closeOnClick: false,
+      });
+      
+     _map.on('mouseenter', 'markers', function(e) {
+        _map.getCanvas().style.cursor = 'pointer';
+        var coordinates = e.features[0].geometry.coordinates.slice();
+        var description = e.features[0].properties.description;
+        // Ensure that if the map is zoomed out such that multiple
+        // copies of the feature are visible, the popup appears
+        // over the copy being pointed to.
+        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+            coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+        }
+        // .setLngLat(_map.unproject(e.point))
+        console.log(e.features[0].properties)
+        popup.setLngLat(coordinates)
+          .setHTML(
+                                
+                                "<b>" + e.features[0].properties.Address + "</b></li>" +
+                                "<br>Property type: <b>" + e.features[0].properties.PropType + "</b>" +
+                                "<br>Sale price: <b>" + "$" + e.features[0].properties.AdjustedSa.toLocaleString() + "</b>" 
+                                )
+          .addTo(_map);
+      });
+      _map.on('mouseout', 'markers', function() {
+        _map.getCanvas().style.cursor = '';
+        popup.remove();
+    });
+    }
+    _map.once ("style.load", function (e)
+    {
+      init ();
+      _map.addControl (new mapboxgl.NavigationControl ());
+    });
+
+  </script>
+  </body>
+</html>
+
+
