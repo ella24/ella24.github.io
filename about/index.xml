@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>About on Coral Negron</title>
+    <link>/about/</link>
+    <description>Recent content in About on Coral Negron</description>
+    <generator>Ella24 -- ella24.github.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy;2019 Coral Negron</copyright>
+    
+	<atom:link href="/about/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>About Me</title>
+      <link>/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/about/</guid>
+      <description>Motivated data journalist with a solid background in storytelling, social media as a tool for reporting, data analysis, and data visualization. Eager to learn and be constantly challenged. Yearning for more experience developing data journalism projects to help citizens reflect on possible and positive changes. Technically-savvy with outstanding relationship building, training, and presentation skills. You can find my portfolio in GitHub as ella24.</description>
+    </item>
+    
+  </channel>
+</rss>

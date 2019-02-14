@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Projects on Coral Negron</title>
+    <link>/projects/</link>
+    <description>Recent content in Projects on Coral Negron</description>
+    <generator>Ella24 -- ella24.github.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 13 Feb 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/projects/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Worthy of Remembrance</title>
+      <link>https://ella24.github.io/Final_Obit_NYT/</link>
+      <pubDate>Sun, 16 Dic 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/projects/Final_Obit_NYT/</guid>
+      <description>Have you wondered about the obituaries coverage of The New York Times? Have you thought if the coverage given to a national hero is the same if it is a heroine? Verify the data:</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on Coral Negron</title>
+    <link>/categories/</link>
+    <description>Recent content in Categories on Coral Negron</description>
+    <generator>Ella24 -- ella24.github.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy;2017 Amber Thomas</copyright>
+    <lastBuildDate>Mon, 11 Feb 2019 12:21:25 +0530</lastBuildDate>
+    
+	<atom:link href="/contact/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Get in touch</title>
+      <link>/contact/</link>
+      <pubDate>Mon, 11 Feb 2019 12:21:25 +0530</pubDate>
+      
+      <guid>/contact/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
